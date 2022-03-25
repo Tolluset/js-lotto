@@ -2,8 +2,8 @@ import {
   LOTTO_COUNTS,
   LOTTO_NUMBERS_LIMIT,
   LOTTO_PRICE,
-} from '../../src/js/models/lotto/constants';
-import NOT_ALLOWED_PAY_UNIT from '../../src/js/models/lotto/messageConstants';
+} from '../../../src/js/models/lotto/constants';
+import NOT_ALLOWED_PAY_UNIT from '../../../src/js/models/lotto/messageConstants';
 
 before(() => cy.visit('../../dist/index.html'));
 
@@ -24,8 +24,7 @@ const typePriceAndSubmit = (price) => {
 };
 
 afterEach(() => {
-  $payFormInput().clear();
-  $paidSection().invoke('removeClass', 'visible');
+  cy.reload();
 });
 
 describe('로또 구입 금액을 입력하면, 금액에 해당하는 로또를 발급해야 한다.', () => {
