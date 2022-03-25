@@ -36,9 +36,7 @@ const renderPaidSectionItems = (lottos) => {
   $lottoPaidSection.classList.add('visible');
   $lottoPaidCounts.innerHTML = lottos.length;
 
-  while ($lottoPaidCards.firstChild) {
-    $lottoPaidCards.removeChild($lottoPaidCards.firstChild);
-  }
+  $lottoPaidCards.replaceChildren();
 
   lottos.forEach((lotto) => {
     return $lottoPaidCards.insertAdjacentHTML('beforeEnd', lottoCardsTemplate(lotto));
