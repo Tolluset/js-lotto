@@ -1,5 +1,5 @@
 import { LOTTO_PRICE, LOTTO_NUMBERS_LIMIT, LOTTO_COUNTS } from './constants';
-import NOT_ALLOWED_PAY_UNIT from './messageConstants';
+import NOT_ALLOWED_PAY_UNIT from './messages.constants';
 
 const pay = (paidPrice) => {
   if (!isValidatePaidPrice(paidPrice)) {
