@@ -10,6 +10,8 @@ const $lottoPaidCheckBox = $lottoPaidSwitch.querySelector('input');
 const $lottoPaidCards = document.querySelector('.lotto-paid-cards');
 const $lottoNumberToggleButton = document.querySelector('.lotto-numbers-toggle-button');
 
+const $lottoCheckForm = document.querySelector('.lotto-check-form');
+
 const $showResultButton = document.querySelector('.open-result-modal-button');
 const $modalClose = document.querySelector('.modal-close');
 const $modal = document.querySelector('.modal');
@@ -19,7 +21,7 @@ const submitLottoPay = (e) => {
   const lottos = pay($lottoPayInput.value);
 
   if (lottos === undefined) $lottoPayForm.reset();
-  else renderPaidSectionItems(lottos);
+  else renderPaidResultSections(lottos);
 };
 
 const lottoCardsTemplate = (
@@ -29,25 +31,32 @@ const lottoCardsTemplate = (
         <span class="lotto-paid-card-numbers d-none text-xl ml-3" data-target="lotto-paid-card-numbers">${lotto.join()}</span>
       </div>`;
 
-const renderPaidSectionItems = (lottos) => {
-  resetPaidSection();
-
-  $lottoPaidSection.classList.add('visible');
+const renderPaidResultSections = (lottos) => {
   $lottoPaidCounts.innerHTML = lottos.length;
-
   $lottoPaidCards.replaceChildren();
 
-  const lottosTagString = lottos.reduce((prv, cur) => {
-    return prv + lottoCardsTemplate(cur);
-  }, '');
-
-  $lottoPaidCards.insertAdjacentHTML('beforeEnd', lottosTagString);
+  resetPaidSection();
+  showLottoResultSections();
+  renderLottoCards(lottos);
 };
 
 const resetPaidSection = () => {
   $lottoPaidCheckBox.checked = false;
   $lottoPaidCards.classList.remove('flex-col');
   $lottoPaidCards.classList.add('flex-row');
+};
+
+const showLottoResultSections = () => {
+  $lottoPaidSection.classList.remove('d-none');
+  $lottoCheckForm.classList.remove('d-none');
+};
+
+const renderLottoCards = (lottos) => {
+  const lottosTagString = lottos.reduce((prv, cur) => {
+    return prv + lottoCardsTemplate(cur);
+  }, '');
+
+  $lottoPaidCards.insertAdjacentHTML('beforeEnd', lottosTagString);
 };
 
 const toggleLottoPaidCards = () => {
