@@ -4,21 +4,20 @@ afterEach(() => {
   cy.reload();
 });
 
-// TODO: The context's each functions are not settled and named, so should change it.
 describe('결과 확인하기 버튼을 누르면 당첨 통계, 수익률을 모달로 확인할 수 있다.', () => {
   context('결과 확인하기 버튼을 누르면 결과 확인 모달이 보인다.', () => {
-    const checkPriecAndPaidCounts = (price) => {};
+    const checkResultModal = () => {};
 
     it('1000원', () => {
-      checkPriecAndPaidCounts(1000);
+      checkResultModal(1000);
     });
 
     it('2000원', () => {
-      checkPriecAndPaidCounts(2000);
+      checkResultModal(2000);
     });
 
     it('10000원', () => {
-      checkPriecAndPaidCounts(10000);
+      checkResultModal(10000);
     });
   });
 
