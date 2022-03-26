@@ -19,10 +19,7 @@ const submitLottoPay = (e) => {
   const lottos = pay($lottoPayInput.value);
 
   if (lottos === undefined) $lottoPayForm.reset();
-  else {
-    renderPaidSectionItems(lottos);
-    resetPaidSection();
-  }
+  else renderPaidSectionItems(lottos);
 };
 
 const lottoCardsTemplate = (
@@ -33,14 +30,18 @@ const lottoCardsTemplate = (
       </div>`;
 
 const renderPaidSectionItems = (lottos) => {
+  resetPaidSection();
+
   $lottoPaidSection.classList.add('visible');
   $lottoPaidCounts.innerHTML = lottos.length;
 
   $lottoPaidCards.replaceChildren();
 
-  lottos.forEach((lotto) => {
-    return $lottoPaidCards.insertAdjacentHTML('beforeEnd', lottoCardsTemplate(lotto));
-  });
+  const lottosTagString = lottos.reduce((prv, cur) => {
+    return prv + lottoCardsTemplate(cur);
+  }, '');
+
+  $lottoPaidCards.insertAdjacentHTML('beforeEnd', lottosTagString);
 };
 
 const resetPaidSection = () => {
