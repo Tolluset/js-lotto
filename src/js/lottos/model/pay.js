@@ -1,5 +1,5 @@
-import { LOTTO_PRICE, LOTTO_NUMBERS_LIMIT, LOTTO_COUNTS } from './constants';
-import NOT_ALLOWED_PAY_UNIT from './messages.constants';
+import { LOTTO_PRICE, LOTTO_NUMBERS_LIMIT, LOTTO_COUNTS } from '../constants';
+import NOT_ALLOWED_PAY_UNIT from '../constants/messages';
 
 const pay = (paidPrice) => {
   if (!isValidatePaidPrice(paidPrice)) {
@@ -22,7 +22,6 @@ const makeLottoCards = (counts) => {
   while (result.length < counts) {
     result.push(makeRandomLottoNumbers());
   }
-
   return result;
 };
 
@@ -39,4 +38,4 @@ const makeRandomLottoNumbers = () => {
   return result.sort((a, b) => a - b);
 };
 
-export { pay, isValidatePaidPrice, makeLottoCards, makeRandomLottoNumbers };
+export default pay;

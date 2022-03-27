@@ -2,8 +2,8 @@ import {
   LOTTO_COUNTS,
   LOTTO_NUMBERS_LIMIT,
   LOTTO_PRICE,
-} from '../../../src/js/models/lotto/constants';
-import NOT_ALLOWED_PAY_UNIT from '../../../src/js/models/lotto/messages.constants';
+} from '../../../src/js/lottos/constants';
+import NOT_ALLOWED_PAY_UNIT from '../../../src/js/lottos/constants/messages';
 
 before(() => cy.visit('../../dist/index.html'));
 
